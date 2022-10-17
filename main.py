@@ -5,7 +5,6 @@ import util1
 def main():
 
     x = util1.Utility()
-
     x.greetUser()
 
     while True:
