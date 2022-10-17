@@ -44,13 +44,18 @@ class BT:
         
         try:
             if node.number == int(val):
-                print(node.name + node.address + str(node.number))
                 print("Name: " + node.name)
                 print("Address: " + node.address)
                 print("Number: " + str(node.number))
-        
+
         except ValueError:
             pass
+
+        if node.left:
+            self.search(node.left, val, type)
+
+        if node.right:
+            self.search(node.right, val, type)
 
     def compareNames(self, a, b):
         return a.lower() == b.lower()
