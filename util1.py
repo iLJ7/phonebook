@@ -34,7 +34,7 @@ class Utility:
 
         option = input()
 
-        target = ""
+        self.tree.matches = 0
 
         if option == "1":
             print("Enter name to search for: ")
@@ -53,7 +53,10 @@ class Utility:
         
         else:
             target = ""
-
+    
+        if self.tree.matches == 0:
+            print('Nothing found!')
+        
         #if option == "1":
         #    if node.name == val:
         #        print(val)

@@ -9,6 +9,8 @@ class Node:
 class BT:
     def __init__(self):
         self.root = None
+        self.matches = 0    # The matches attribute indicates whether a match has been found during the search.
+                            # For each match found in the phonebook, we increment the matches variable by 1.
 
     def insert(self, node, name, address, number):
         if node is None:
@@ -36,17 +38,20 @@ class BT:
             print("Name: " + node.name)
             print("Address: " + node.address)
             print("Number: " + str(node.number))
+            self.matches += 1
 
         if self.compareNames(node.address, val):
             print("Name: " + node.name)
             print("Address: " + node.address)
             print("Number: " + str(node.number))
-        
+            self.matches += 1
+
         try:
             if node.number == int(val):
                 print("Name: " + node.name)
                 print("Address: " + node.address)
                 print("Number: " + str(node.number))
+                self.matches += 1
 
         except ValueError:
             pass
