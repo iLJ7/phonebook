@@ -57,14 +57,3 @@ class Utility:
         if self.tree.matches == 0:
             print('Nothing found!')
         
-        #if option == "1":
-        #    if node.name == val:
-        #        print(val)
-        
-        #if option == "2":
-        #    if node.address == val:
-        #        print(val)
-
-        #if option == "3":
-        #    if node.number == val:
-        #       print(val)

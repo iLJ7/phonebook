@@ -12,6 +12,11 @@ class BT:
         self.matches = 0    # The matches attribute indicates whether a match has been found during the search.
                             # For each match found in the phonebook, we increment the matches variable by 1.
 
+    def printEntry(self, node):
+        print("Name: " + node.name)
+        print("Address: " + node.address)
+        print("Number: " + str(node.number))
+
     def insert(self, node, name, address, number):
         if node is None:
             self.root = Node(name, address, number)
@@ -34,27 +39,27 @@ class BT:
         
     def search(self, node, val, type):
 
-        if self.compareNames(node.name, val):
-            print("Name: " + node.name)
-            print("Address: " + node.address)
-            print("Number: " + str(node.number))
-            self.matches += 1
+        if int(type) == 1:
 
-        if self.compareNames(node.address, val):
-            print("Name: " + node.name)
-            print("Address: " + node.address)
-            print("Number: " + str(node.number))
-            self.matches += 1
-
-        try:
-            if node.number == int(val):
-                print("Name: " + node.name)
-                print("Address: " + node.address)
-                print("Number: " + str(node.number))
+            if self.compareNames(node.name, val):
+                self.printEntry(node)
                 self.matches += 1
 
-        except ValueError:
-            pass
+        elif int(type) == 2:
+            
+            if self.compareNames(node.address, val):
+                self.printEntry(node)
+                self.matches += 1
+
+        elif int(type) == 3:
+
+            try:
+                if node.number == int(val):
+                    self.printEntry(node)
+                    self.matches += 1
+
+            except ValueError:
+                pass
 
         if node.left:
             self.search(node.left, val, type)
@@ -70,3 +75,22 @@ class BT:
 
     def compareNumbers(self, a, b):
         return a == b
+    
+    def deleteNode(self, root, key):
+        if not root:
+            return None
+        
+        if root.val == key:
+            #4 possibilities
+
+            if not root.left and not root.right:
+                return None
+            
+            if not root.left and root.right:
+                return root.right
+            
+            if not root.right and root.left:
+                return root.left
+        
+        
+            
