@@ -21,5 +21,8 @@ def main():
         if s == "search":
             x.search()
 
+        if s == "remove":
+            x.delete()
+
 if __name__ == "__main__":
     main()

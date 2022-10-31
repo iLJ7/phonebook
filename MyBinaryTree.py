@@ -76,21 +76,27 @@ class BT:
     def compareNumbers(self, a, b):
         return a == b
     
-    def deleteNode(self, root, key):
-        if not root:
+    def deleteNode(self, node, val):
+    
+        if not node:
             return None
         
-        if root.val == key:
+        if self.compareNames(node.name, val):
             #4 possibilities
-
-            if not root.left and not root.right:
+            print('Match found')
+            if not node.left and not node.right:
                 return None
             
-            if not root.left and root.right:
-                return root.right
+            if not node.left and node.right:
+                return node.right
             
-            if not root.right and root.left:
-                return root.left
+            if not node.right and node.left:
+                return node.left
         
+        elif node.left:
+            node.left = self.deleteNode(node.left, val)
         
-            
+        else:
+            node.right = self.deleteNode(node.right, val)
+        
+        return node

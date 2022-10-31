@@ -57,3 +57,27 @@ class Utility:
         if self.tree.matches == 0:
             print('Nothing found!')
         
+    def delete(self):
+        print('Enter:')
+        print('1 to delete by name')
+        print('2 to delete by address')
+        print('3 to delete by number')
+
+        option = input()
+
+        self.tree.matches = 0
+
+        if option == "1":
+            print("Enter name to delete: ")
+            val = input()
+            self.tree.deleteNode(self.tree.root, val)
+        
+        elif option == "2":
+            print("Enter address to delete: ")
+            val = input()
+            self.tree.deleteNode(self.tree.root, val)
+        
+        elif option == "3":
+            print("Enter number to delete: ")
+            val = input()
+            self.tree.deleteNode(self.tree.root, val)
