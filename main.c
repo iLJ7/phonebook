@@ -8,7 +8,6 @@
 
 int main()
 {
-   greet();
    struct node* root = createNode(1);
    insertLeft(root, 2);
    insertRight(root, 3);
@@ -22,7 +21,7 @@ int main()
    scanf("%s", str);
 
    if(!strcmp(str, "print")){
-       printf("Hi there\n");
+       printTree(root);
    }
    return 0;
 }
