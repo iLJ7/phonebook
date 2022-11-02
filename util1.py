@@ -1,5 +1,6 @@
 from unicodedata import name
 import MyBinaryTree
+import time
 
 class Utility:
     def __init__(self):
@@ -11,7 +12,22 @@ class Utility:
     
     def greetUser(self):
         print('Welcome to the Phonebook')
-        print("------------------------")
+
+        print('------------------------')
+
+        time.sleep(1)
+        print('The following commands are available:')
+        time.sleep(1)
+        print('store')
+        time.sleep(1)
+        print('search')
+        time.sleep(1)
+        print('remove')
+        time.sleep(1)
+        print('print')
+        time.sleep(1)
+
+        print('Type your command and press enter.')
 
     def store(self):
         print('Enter name:')
@@ -81,3 +97,5 @@ class Utility:
             print("Enter number to delete: ")
             val = input()
             self.tree.deleteNode(self.tree.root, val)
+        
+        print('Contact deleted, if it existed.')
