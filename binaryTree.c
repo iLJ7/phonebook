@@ -1,17 +1,14 @@
-
 // Tree traversal in C
 
 #include <stdio.h>
 #include <stdlib.h>
-
-struct phoneTree {
-  char name[];
-  char address[];
-  char phone[];
-}
+#include <string.h>
 
 struct node {
-  int item;
+  char name[50];
+  char address[50];
+  int number;
+
   struct node* left;
   struct node* right;
 };
@@ -23,13 +20,16 @@ void inorderTraversal(struct node* root) {
   }
 
   inorderTraversal(root->left);
-  printf("%d ->", root->item);
+  printf("%d ->", root->number);
   inorderTraversal(root->right);
 }
 
-struct node* createNode(int value) {
+struct node* createNode(char* name, char* address, int number) {
   struct node* newNode = malloc(sizeof(struct node));
-  newNode->item = value;
+  strcpy(newNode->name, name);
+  strcpy(newNode->address, address);
+  newNode->number = number;
+
   newNode->left = NULL;
   newNode->right = NULL;
 
@@ -37,14 +37,14 @@ struct node* createNode(int value) {
 }
 
 // Insert on the left of the node
-struct node* insertLeft(struct node* root, int value) {
-  root->left = createNode(value);
+struct node* insertLeft(struct node *root, char* name, char* address, int number) {
+  root->left = createNode(name, address, number);
 
   return root->left;
 }
 
-struct node* insertRight(struct node* root, int value) {
-  root->right = createNode(value);
+struct node* insertRight(struct node *root, char* name, char* address, int number) {
+  root->right = createNode(name, address, number);
 
   return root->right;
 }
@@ -55,7 +55,7 @@ void printTree(struct node *p)
     if (p != NULL) {
         /*Print node data.*/
         printTree(p->left);
-        printf("%d\n", p->item);
+        printf("%s %s %d\n", p->name, p->address, p->number);
         printTree(p->right);
     }
 }

@@ -2,15 +2,14 @@
    A first program in C */
 
 #include <stdio.h>
-#include "utility.c"
+#include "utility.h"
+#include "binaryTree.h"
 #include <string.h>
 
 int main()
 {
    struct node* root = createNode("Luke", "Robinstown", 50);
-   insertLeft(root, "Cian", "Rathbridge", 100);
-   insertRight(root, "Alex", "Vegetable", 150);
-
+   insertLeft(create
    char str[100];
    int i;
 
@@ -19,10 +18,6 @@ int main()
 
    if(!strcmp(str, "print")){
        printTree(root);
-   }
-
-   if(!strcmp(str, "store")){
-       insert(root);
    }
 
    return 0;
