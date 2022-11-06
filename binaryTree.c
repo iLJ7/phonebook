@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 struct node {
   char name[50];
@@ -16,6 +17,7 @@ struct node {
 void printNode(struct node* root);
 void searchBTname(struct node* root, char* name);
 void searchBTnumber(struct node* root, int number);
+const char* toLowercase(char* str);
 
 // Inorder traversal
 void inorderTraversal(struct node* root) {
@@ -130,7 +132,14 @@ struct node* removeBT(struct node *root, char *name){
 }
 
 void searchBTname(struct node *root, char *name){
-    if(!strcmp(root->name, name)){
+
+    char name1[50];
+    char name2[50];
+
+    strcpy(name1, root->name);
+    strcpy(name2, name);
+
+    if(!strcmp(toLowercase(name1), toLowercase(name2))){
         printNode(root);
     }
 
@@ -161,4 +170,15 @@ void printNode(struct node *node){
     printf("-----------------------\n");
     printf("Name: %s \nAddress: %s \nNumber: %d\n", node->name, node->address, node->number);
     printf("-----------------------\n");
+}
+
+const char* toLowercase(char *str){
+
+    int j = 0;
+    while (str[j]) {
+        str[j] = tolower(str[j]);
+        j++;
+    }
+
+    return str;
 }
