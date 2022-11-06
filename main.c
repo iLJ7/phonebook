@@ -14,15 +14,25 @@ int main()
    char str[100];
    int i;
 
-   printf("Enter a command :\n");
-   scanf("%s", str);
+   while(1){
+       printf("Enter a command: \n");
+       scanf("%s", str);
 
-   if(!strcmp(str, "print")){
-       printTree(root);
-   }
+       if(!strcmp(str, "print")){
+           printTree(root);
+       }
 
-   if(!strcmp(str, "store")){
-       insert(root);
+       if(!strcmp(str, "store")){
+           insert(root);
+       }
+
+       if(!strcmp(str, "remove")){
+           removeUtil(root);
+       }
+
+       if(!strcmp(str, "quit")){
+           break;
+       }
    }
 
    return 0;

@@ -59,3 +59,62 @@ void printTree(struct node *p)
         printTree(p->right);
     }
 }
+
+void insertBT(struct node *node, char *name, char *address, int number){
+
+  if(node->left){
+    insertBT(node->left, name, address, number);
+  }
+
+  else if(node->right){
+    insertBT(node->right, name, address, number);
+  }
+
+  else{
+    node->left = createNode(name, address, number);
+  }
+}
+
+struct node* inorderpre(struct node* node){
+
+  while(node->right != NULL){
+      node = node->right;
+  }
+
+   return node;
+
+}
+struct node* removeBT(struct node *root, char *name){
+
+  if(root == NULL){
+     return root;
+  }
+
+  if(strcmp(root->name, name) > 0){
+      root->left = removeBT(root->left, name);
+  }
+
+  else if(strcmp(root->name, name) < 0){
+      root->right = removeBT(root->right, name);
+  }
+
+  else {
+      if(root->left == NULL){
+          struct node* temp = root->right;
+          free(root);
+          return temp;
+      }
+
+      else if(root->right == NULL){
+          struct node* temp = root->left;
+          free(root);
+          return temp;
+      }
+
+      struct node* temp = inorderpre(root->left);
+      strcpy(root->name, temp->name);
+      root->left = removeBT(root->left, temp->name);
+  }
+
+  return root;
+}

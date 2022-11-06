@@ -25,27 +25,27 @@ void insert(struct node *root) {
     char address[100];
     int number;
 
-    printf("Enter name:\n");
+    printf("Enter name to insert:\n");
     scanf("%s", name);
 
-    printf("Enter address:\n");
+    printf("Enter address to insert:\n");
     scanf("%s", address);
 
-    printf("Enter number:\n");
+    printf("Enter number to insert:\n");
     scanf("%d", &number);
 
     printf("%s %s %d\n", name, address, number);
 
+    insertBT(root, name, address, number);
     /* call binaryTree insert function here. */
-    if(root->left){
-        insert(root->left);
-    }
+}
 
-    else if(root->right){
-        insert(root->right);
-    }
+void removeUtil(struct node *root){
 
-    else{
-        root->left = createNode(name, address, number);
-    }
+    char name[100];
+
+    printf("Enter name to remove:\n");
+    scanf("%s", name);
+
+    removeBT(root, name);
 }
