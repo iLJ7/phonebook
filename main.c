@@ -7,9 +7,7 @@
 
 int main()
 {
-   struct node* root = createNode("Luke", "Robinstown", 50);
-   insertLeft(root, "Cian", "Rathbridge", 100);
-   insertRight(root, "Alex", "Vegetable", 150);
+   struct node* root = createNode("ROOT", "ROOT-ADDRESS", 1);
 
    char str[100];
    int i;
