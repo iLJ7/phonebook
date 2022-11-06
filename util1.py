@@ -45,8 +45,7 @@ class Utility:
     def search(self):
         print('Enter:')
         print('1 to search by name')
-        print('2 to search by address')
-        print('3 to search by number')
+        print('2 to search by number')
 
         option = input()
 
@@ -55,20 +54,12 @@ class Utility:
         if option == "1":
             print("Enter name to search for: ")
             val = input()
-            self.tree.search(self.tree.root, val, 1)
+            self.tree.searchName(self.tree.root, val)
         
         elif option == "2":
-            print("Enter address to search for: ")
-            val = input()
-            self.tree.search(self.tree.root, val, 2)
-        
-        elif option == "3":
             print("Enter number to search for: ")
             val = input()
-            self.tree.search(self.tree.root, val, 3)
-        
-        else:
-            target = ""
+            self.tree.searchNumber(self.tree.root, val)
     
         if self.tree.matches == 0:
             print('Nothing found!')

@@ -13,6 +13,10 @@ struct node {
   struct node* right;
 };
 
+void printNode(struct node* root);
+void searchBTname(struct node* root, char* name);
+void searchBTnumber(struct node* root, int number);
+
 // Inorder traversal
 void inorderTraversal(struct node* root) {
   if (root == NULL){
@@ -54,9 +58,15 @@ void printTree(struct node *p)
     /*If tree has nodes:*/
     if (p != NULL) {
         /*Print node data.*/
-        printTree(p->left);
-        printf("%s %s %d\n", p->name, p->address, p->number);
-        printTree(p->right);
+        if(p->left){
+            printTree(p->left);
+        }
+
+        printNode(p);
+
+        if(p->right){
+            printTree(p->right);
+        }
     }
 }
 
@@ -117,4 +127,38 @@ struct node* removeBT(struct node *root, char *name){
   }
 
   return root;
+}
+
+void searchBTname(struct node *root, char *name){
+    if(!strcmp(root->name, name)){
+        printNode(root);
+    }
+
+    if(root->left){
+        searchBTname(root->left, name);
+    }
+
+    if(root->right){
+        searchBTname(root->right, name);
+    }
+}
+
+void searchBTnumber(struct node *root, int number){
+    if(root->number == number){
+        printNode(root);
+    }
+
+    if(root->left){
+        searchBTnumber(root->left, number);
+    }
+
+    if(root->right){
+        searchBTnumber(root->right, number);
+    }
+}
+
+void printNode(struct node *node){
+    printf("-----------------------\n");
+    printf("Name: %s \nAddress: %s \nNumber: %d\n", node->name, node->address, node->number);
+    printf("-----------------------\n");
 }

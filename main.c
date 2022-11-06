@@ -22,6 +22,10 @@ int main()
            printTree(root);
        }
 
+       if(!strcmp(str, "search")){
+           search(root);
+       }
+
        if(!strcmp(str, "store")){
            insert(root);
        }

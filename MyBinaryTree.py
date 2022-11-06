@@ -37,40 +37,31 @@ class BT:
             self.printTree(node.left)
             self.printTree(node.right)
         
-    def search(self, node, val, type):
+    def searchName(self, node, val):
 
-        if int(type) == 1:
-
-            if self.compareNames(node.name, val):
-                self.printEntry(node)
-                self.matches += 1
-
-        elif int(type) == 2:
-            
-            if self.compareNames(node.address, val):
-                self.printEntry(node)
-                self.matches += 1
-
-        elif int(type) == 3:
-
-            try:
-                if node.number == int(val):
-                    self.printEntry(node)
-                    self.matches += 1
-
-            except ValueError:
-                pass
+        if self.compareNames(node.name, val):
+            self.printEntry(node)
+            self.matches += 1
 
         if node.left:
-            self.search(node.left, val, type)
+            self.searchName(node.left, val)
 
         if node.right:
-            self.search(node.right, val, type)
+            self.searchName(node.right, val)
+
+    def searchNumber(self, node, val):
+        
+        if self.compareNumbers(node.name, val):
+            self.printEntry(node)
+            self.matches += 1
+
+        if node.left:
+            self.searchNumber(node.left, val)
+        
+        if node.right:
+            self.searchNumber(node.right, val)
 
     def compareNames(self, a, b):
-        return a.lower() == b.lower()
-    
-    def compareAddresses(self, a, b):
         return a.lower() == b.lower()
 
     def compareNumbers(self, a, b):

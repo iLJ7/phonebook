@@ -49,3 +49,31 @@ void removeUtil(struct node *root){
 
     removeBT(root, name);
 }
+
+void search(struct node *root){
+
+    char name[100];
+    int number;
+    int option;
+
+    printf("Enter:\n");
+    printf("1 to search by name\n");
+    printf("2 to search by number\n");
+
+    scanf("%d", &option);
+
+    if(option == 1){
+        printf("Enter name to search for:\n");
+
+        scanf("%s", name);
+        searchBTname(root, name);
+    }
+
+    else if(option == 2){
+
+        printf("Enter number to search for:\n");
+        scanf("%d", &number);
+        searchBTnumber(root, number);
+    }
+
+}
