@@ -37,7 +37,6 @@ void insert(struct node *root) {
     printf("%s %s %d\n", name, address, number);
 
     insertBT(root, name, address, number);
-    /* call binaryTree insert function here. */
 }
 
 void removeUtil(struct node *root){

@@ -7,6 +7,7 @@
 
 int main()
 {
+   greet();
    struct node* root = createNode("ROOT", "ROOT-ADDRESS", 1);
 
    char str[100];
