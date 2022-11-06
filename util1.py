@@ -1,15 +1,20 @@
-from unicodedata import name
 import MyBinaryTree
 import time
 
-class Utility:
-    def __init__(self):
-        self.tree = MyBinaryTree.BT()
+# Our utility class, which facilitates commands on the binary tree.
 
+class Utility:
+
+    # We initialise our tree.
+    def __init__(self):
+        self.tree = MyBinaryTree.BT() 
+
+    # We call our myBinaryTree print function.
     def printTree(self):
         print('Printing the tree')
         self.tree.printTree(self.tree.root)
     
+    # We greet the user.
     def greetUser(self):
         print('Welcome to the Phonebook')
 
@@ -18,17 +23,18 @@ class Utility:
         time.sleep(1)
         print('The following commands are available:')
         time.sleep(1)
-        print('store')
+        print('print')
         time.sleep(1)
         print('search')
         time.sleep(1)
+        print('store')
+        time.sleep(1)
         print('remove')
         time.sleep(1)
-        print('print')
-        time.sleep(1)
 
-        print('Type your command and press enter.')
+        print('Enter a command: ')
 
+    # Our store function, which processes input and passes it to the bianry tree insert function.
     def store(self):
         print('Enter name:')
         name = input()
@@ -42,6 +48,7 @@ class Utility:
         self.tree.insert(self.tree.root, name, address, number)
         print('Inserted')
     
+    # Our search function, which passes the relevant data to the recursive search function.
     def search(self):
         print('Enter:')
         print('1 to search by name')
@@ -64,15 +71,13 @@ class Utility:
         if self.tree.matches == 0:
             print('Nothing found!')
         
+    # Our delete function, which passes the relevant data to the recursive delete function.
     def delete(self):
         print('Enter:')
         print('1 to delete by name')
-        print('2 to delete by address')
-        print('3 to delete by number')
+        print('2 to delete by number')
 
         option = input()
-
-        self.tree.matches = 0
 
         if option == "1":
             print("Enter name to delete: ")
@@ -80,11 +85,6 @@ class Utility:
             self.tree.deleteNode(self.tree.root, val)
         
         elif option == "2":
-            print("Enter address to delete: ")
-            val = input()
-            self.tree.deleteNode(self.tree.root, val)
-        
-        elif option == "3":
             print("Enter number to delete: ")
             val = input()
             self.tree.deleteNode(self.tree.root, val)

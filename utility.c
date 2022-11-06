@@ -4,7 +4,7 @@
 
 void greet() {
     printf("Welcome to the Phonebook\n");
-    printf("--------------------------\n");
+    printf("------------------------\n");
     sleep(1);
 
     printf("The following commands are available:\n");

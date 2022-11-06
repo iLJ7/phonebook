@@ -41,9 +41,9 @@ void printTree(struct node *node)
             printTree(node->left);
         }
 
-        printNode(p);
+        printNode(node);
 
-        if(p->right){
+        if(node->right){
             printTree(node->right);
         }
     }

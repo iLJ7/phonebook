@@ -1,2 +1,1 @@
 comment both languages
-make sleep times the same
