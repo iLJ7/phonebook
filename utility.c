@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
-#include "binaryTree.c"
+#include "binaryTree.c"  // Including our binaryTree.c file, which handles the operations to be carried out on the binary tree phonebook.
 
 void greet() {
     printf("Welcome to the Phonebook\n");
@@ -19,6 +19,7 @@ void greet() {
     sleep(1);
 }
 
+// Our setup insert function.
 void insert(struct node *root) {
 
     char name[100];
@@ -34,11 +35,10 @@ void insert(struct node *root) {
     printf("Enter number to insert:\n");
     scanf("%d", &number);
 
-    printf("%s %s %d\n", name, address, number);
-
-    insertBT(root, name, address, number);
+    insertBT(root, name, address, number);  // Calling our recursive insert function from binaryTrees.c
 }
 
+// Our setup remove function.
 void removeUtil(struct node *root){
 
     char name[100];
@@ -49,6 +49,7 @@ void removeUtil(struct node *root){
     removeBT(root, name);
 }
 
+// Our setup search function.
 void search(struct node *root){
 
     char name[100];
@@ -65,14 +66,14 @@ void search(struct node *root){
         printf("Enter name to search for:\n");
 
         scanf("%s", name);
-        searchBTname(root, name);
+        searchBTname(root, name);  // Calling the recursive search-by-name function in binaryTrees.c
     }
 
     else if(option == 2){
 
         printf("Enter number to search for:\n");
         scanf("%d", &number);
-        searchBTnumber(root, number);
+        searchBTnumber(root, number);  // Calling the recursive search-by-number function in binaryTrees.c
     }
 
 }

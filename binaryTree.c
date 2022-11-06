@@ -1,10 +1,9 @@
-// Tree traversal in C
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
+// Modelling our node with a struct.
 struct node {
   char name[50];
   char address[50];
@@ -14,22 +13,13 @@ struct node {
   struct node* right;
 };
 
+// Creating our function declarations.
 void printNode(struct node* root);
 void searchBTname(struct node* root, char* name);
 void searchBTnumber(struct node* root, int number);
 const char* toLowercase(char* str);
 
-// Inorder traversal
-void inorderTraversal(struct node* root) {
-  if (root == NULL){
-      return;
-  }
-
-  inorderTraversal(root->left);
-  printf("%d ->", root->number);
-  inorderTraversal(root->right);
-}
-
+// Our create node function. We allocate the correct amount of memory and store the name, address and number.
 struct node* createNode(char* name, char* address, int number) {
   struct node* newNode = malloc(sizeof(struct node));
   strcpy(newNode->name, name);
@@ -42,36 +32,24 @@ struct node* createNode(char* name, char* address, int number) {
   return newNode;
 }
 
-// Insert on the left of the node
-struct node* insertLeft(struct node *root, char* name, char* address, int number) {
-  root->left = createNode(name, address, number);
-
-  return root->left;
-}
-
-struct node* insertRight(struct node *root, char* name, char* address, int number) {
-  root->right = createNode(name, address, number);
-
-  return root->right;
-}
-
-void printTree(struct node *p)
+// Our function to print the entire tree by in-order traversal.
+void printTree(struct node *node)
 {
     /*If tree has nodes:*/
-    if (p != NULL) {
-        /*Print node data.*/
-        if(p->left){
-            printTree(p->left);
+    if (node != NULL) {
+        if(node->left){
+            printTree(node->left);
         }
 
         printNode(p);
 
         if(p->right){
-            printTree(p->right);
+            printTree(node->right);
         }
     }
 }
 
+// Our recursive function to insert a node into the tree.
 void insertBT(struct node *node, char *name, char *address, int number){
 
   if(node->left){
@@ -96,6 +74,8 @@ struct node* inorderpre(struct node* node){
    return node;
 
 }
+
+// Our function to remove a given node from the tree.
 struct node* removeBT(struct node *root, char *name){
 
   if(root == NULL){
@@ -131,6 +111,7 @@ struct node* removeBT(struct node *root, char *name){
   return root;
 }
 
+// Our function to search the binary tree by name.
 void searchBTname(struct node *root, char *name){
 
     char name1[50];
@@ -152,6 +133,7 @@ void searchBTname(struct node *root, char *name){
     }
 }
 
+// Our function to search the binary tree by number.
 void searchBTnumber(struct node *root, int number){
     if(root->number == number){
         printNode(root);
@@ -166,12 +148,15 @@ void searchBTnumber(struct node *root, int number){
     }
 }
 
+// Printing a node of the tree in style.
 void printNode(struct node *node){
     printf("-----------------------\n");
     printf("Name: %s \nAddress: %s \nNumber: %d\n", node->name, node->address, node->number);
     printf("-----------------------\n");
 }
 
+// A function which converts a given string into lowercase.
+// Since a string is an array of characters in C, we simply use the tolower function on each character.	
 const char* toLowercase(char *str){
 
     int j = 0;

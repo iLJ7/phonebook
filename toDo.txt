@@ -1,2 +1,2 @@
 comment both languages
-header file
+make sleep times the same

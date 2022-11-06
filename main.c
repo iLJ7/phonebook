@@ -1,19 +1,19 @@
-/* hello.c
-   A first program in C */
+/* See README for instructions on how to use the phonebook */
 
 #include <stdio.h>
-#include "utility.c"
+#include "utility.c" /* Including our utility function */
 #include <string.h>
 
 int main()
 {
-   greet();
-   struct node* root = createNode("ROOT", "ROOT-ADDRESS", 1);
+   greet(); // We greet the user.
+
+   struct node* root = createNode("ROOT", "ROOT-ADDRESS", 1);     // We create a non-entry root to serve as a base for inserting into our tree.
 
    char str[100];
    int i;
 
-   while(1){
+   while(1){                            // We create a while loop to repeatedly ask for commands, until the user enters quit.
        printf("Enter a command: \n");
        scanf("%s", str);
 
@@ -23,7 +23,7 @@ int main()
 
        if(!strcmp(str, "search")){
            search(root);
-       }
+       }                                        // We call the respective functions from the utility file.
 
        if(!strcmp(str, "store")){
            insert(root);
